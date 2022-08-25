@@ -1,0 +1,770 @@
+/* start variables */
+
+:root {
+  /* gray light to dark */
+
+  --color1: #eee;
+  --color2: #ddd;
+  --color3: #dcdcdc;
+  --color4: #c0c0c0;
+  --color5: #a9a9a9;
+  --color6: #6b6e70;
+  --color7: #696969;
+  --color8: #474b4f;
+  --color8-2: #333333;
+  --color9: #222629;
+  --color11: #778899;
+  --color22: #708090;
+  --color33: #2f4f4f;
+}
+
+/* end variables */
+
+/* --- --- --- */
+
+/* start global rules */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+/* --- --- --- */
+
+/* start responsive for all the screens sizes */
+
+/* small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+/* medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+/* large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/* end responsive for all the screens sizes */
+
+/* --- --- --- */
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- --- --- */
+
+/* start components */
+/* components => some things with special style that i will use them many times */
+.special-heading {
+  color: var(--color4);
+  font-size: 100px;
+  text-align: center;
+  font-weight: 800;
+  opacity: 0.7;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+/* .spea... + p ==> just the <p> after the .special-heading */
+.special-heading + p {
+  margin: -20px 0 0;
+  font-size: 15px;
+  text-align: center;
+  color: var(--color8);
+}
+
+/* for the small screens */
+@media (max-width: 767px) {
+  .special-heading {
+    font-size: 60px;
+    /* make the font-size smaller */
+  }
+  .special-heading + p {
+    margin-top: -10px;
+    /* bash <p> matjish lass9a 3la <h3> */
+  }
+}
+
+/* end components */
+
+/* end global rules */
+
+/* start header */
+
+.header {
+  padding: 20px;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  width: 50px;
+}
+
+.header .links {
+  position: relative;
+}
+
+.header .links:hover .icon span:nth-child(2) {
+  width: 100%;
+  /* the scnd span will be 100% when u hover on it */
+}
+
+/* style our span and make the logo with it */
+
+.header .links .icon {
+  width: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  /* to REVERSE the span */
+  cursor: pointer;
+}
+
+.header .links .icon span {
+  background-color: var(--color8);
+  margin-bottom: 5px;
+  height: 2px;
+}
+
+.header .links .icon span:first-child {
+  width: 100%;
+}
+
+.header .links .icon span:nth-child(2) {
+  width: 50%;
+  transition: 0.3s;
+}
+
+.header .links .icon span:last-child {
+  width: 100%;
+}
+
+/* end */
+
+.header .links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color1);
+  position: absolute;
+  right: 0;
+  min-width: 200px;
+  /* top: 100%; */
+  top: calc(100% + 15px);
+  /* the 15px for a line we will make it on our links, 
+  that's why we need this space */
+  display: none;
+  border-radius: 3px;
+  /*  */
+  z-index: 99;
+  /* bash yban menu of li dyylna 3la backg iamge o dakshi */
+}
+
+.header .links ul::before {
+  content: "";
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--color1) transparent;
+  /* first u should to write instead of transparent a color to see the concept */
+  /* and then make them transparent except ONE */
+  position: absolute;
+  right: 5px;
+  /* icon => width 30px */
+  /* width between ul and icon => 20px */
+  /* SO thers 10px, so 5px right, 5px left */
+  top: -20px;
+}
+
+/*  */
+.header .links:hover ul {
+  display: block;
+}
+/* when u hover on the links (logo with span), ul will be a BLOCK  */
+
+.header .links ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: var(--color8);
+  transition: 0.3s;
+}
+
+.header .links ul li a:hover {
+  padding-left: 25px;
+  /* it will be moving 10px to the left, (we have already the 15px) */
+}
+
+.header .links ul li:not(:last-child) a {
+  border-bottom: 1px solid var(--color2);
+}
+/* all the a in the li except the last one */
+
+/* end header */
+
+/* --- --- --- */
+
+/* start landing section */
+
+.landing {
+  background-image: url(../images/gray.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  height: calc(100vh - 90px);
+  /* 95px => height of the header */
+  position: relative;
+  /* we put the relative position here, bash dak intro text ykun f center dyl element(pic) */
+}
+
+.landing .intro-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* to center the intro text */
+  text-align: center;
+  /*  */
+  width: 320px;
+  max-width: 100%;
+  /* just for the phone View */
+}
+
+.landing .intro-text h1 {
+  margin: 0;
+  /* to fix something about the VIEW, (delete it and see the diff) */
+  font-weight: bold;
+  font-size: 50px;
+  color: var(--color9);
+  letter-spacing: 2px;
+}
+
+.landing .intro-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.landing .intro-text p .black,
+.landing .intro-text p .white {
+  font-weight: 500;
+}
+
+/* end landing section */
+
+/* --- --- ---  */
+
+/* start button for scrolling top */
+
+.landing .button {
+  background-color: #2f4f4f;
+  display: flex;
+  justify-content: end;
+}
+
+.landing .button button {
+  border-radius: 6px;
+  padding: 4px;
+  position: fixed;
+  width: 30px;
+  height: 40px;
+  margin-right: 3px;
+  margin-left: 3px;
+  cursor: pointer;
+  border: none;
+  color: var(--color9);
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.3s;
+  opacity: 0.6;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid var(--color9);
+  display: none;
+  bottom: 20px;
+}
+
+.landing .button button:hover {
+  opacity: 1;
+}
+
+/* end button for scrolling top*/
+
+/* --- --- --- */
+
+/* start features styling */
+
+.features {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: var(--color1);
+  /*  */
+  /* height: 2000px; */
+  /*  */
+}
+
+.features .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* auto-fill => ghay3mr l3ibat 3la 7assab dakshi li 3tiinah */
+  /* ghadi ybda b 300px, o ila kan more space ghadi yakhd 1fr */
+  /* ila kan 3ndi 1000px forExample ghadi tfr9 had 1000 3la 3 */
+  /* minimum value is 300px */
+  grid-gap: 40px;
+}
+
+.features .feat {
+  padding: 20px;
+  text-align: center;
+}
+
+.features .feat i {
+  color: var(--color8);
+  font-size: 45px;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+.features .feat h3 {
+  font-weight: 700;
+  line-height: 1.7;
+  margin: 18px 0;
+  letter-spacing: 1.2px;
+}
+
+.features .feat p {
+  line-height: 1.6;
+  font-size: 14px;
+  color: var(--color8);
+}
+
+/* start i hover */
+
+.features .feat i:hover {
+  color: #000;
+  transform: scale(1.2);
+}
+
+/* end i hover */
+
+/* end features styling */
+
+/* start services section */
+
+.services {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  /* height: 100vh; */
+}
+
+.services .services-content .col .image img {
+  width: 300px;
+  border-radius: 4px;
+}
+
+.services .services-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 40px;
+  margin-top: 100px;
+}
+
+.services .services-content .srv {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+/* for small screens */
+@media (max-width: 767px) {
+  .services .services-content .srv {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.services .services-content .srv i {
+  color: var(--color11);
+  /* flex-basis: 60px; */
+  font-size: 1.8em;
+  margin: 0 12px 0 0;
+}
+
+.services .services-content .srv .text p {
+  flex: 1;
+  font-size: 15px;
+}
+
+.services .services-content .srv h3 {
+  margin: 0 0 20px;
+  color: var(--color8-2);
+}
+
+.services .services-content .srv .text p {
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.services .services-content .col .image {
+  text-align: center;
+  position: relative;
+}
+
+.services .services-content .col .image::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  /* dak beforeElement ghadi yji f RIGHT */
+  background-color: var(--color6);
+  height: calc(100% + 100px);
+  /* zdna 100px because we want beforeElement with height more than the height of our picture */
+  width: 40px;
+  top: -50px;
+  /* bash ytl3 beforeElement dylna o yji fnss */
+  /* -50px BECAUSE we add 100px, if we add 80px, it'll be -40px */
+  z-index: -1;
+  /* bash beforeEl yrj3 luuur (pic hiya li twli tban) */
+  border-radius: 4px;
+}
+
+/* mn ghir large screens maghadish tban 3ndna pic */
+@media (max-width: 1199px) {
+  .image-column {
+    display: none;
+  }
+}
+
+/* for small screen, lblaaan dyl scrolling button */
+@media (max-width: 767px) {
+  .services .services-content .col,
+  .portfolio .portfolio-content .card {
+    width: 280px;
+    margin: auto;
+  }
+
+  .services .services-content .col .srv h3 {
+    margin-top: 10px;
+  }
+}
+
+/* end services section */
+
+/* --- --- --- */
+
+/* start portfolio section */
+
+.portfolio {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  /* height: 100vh; */
+  background-color: var(--color1);
+}
+
+.portfolio .container .portfolio-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 40px;
+  margin-top: 100px;
+}
+
+.portfolio .container .portfolio-content .card img {
+  max-width: 100%;
+  /* bash pic tjii 9d CARD */
+  /* border-radius: 5px; */
+  /* opacity: 0.7; */
+}
+
+.portfolio .portfolio-content .card {
+  background-color: #fff;
+  transition: 0.3s linear;
+}
+
+.portfolio .portfolio-content .card .info {
+  padding: 20px;
+}
+
+.portfolio .portfolio-content .card .info h3 {
+  margin: 0;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.portfolio .portfolio-content .card .info p {
+  color: var(--color8);
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+/* hover */
+.portfolio .portfolio-content .card:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+/*  */
+
+/* end portfolio section */
+
+/* --- --- --- */
+
+/* start about section */
+
+.about {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.about .container .about-content .image img {
+  max-width: 100%;
+  max-height: 100%;
+  border: none;
+  border-radius: 5px;
+}
+
+.about .container .about-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* border: 2px solid; */
+  /* background-color: #ddd; */
+  margin-top: 100px;
+}
+
+.about .container .about-content .image {
+  position: relative;
+  /* border: 3px solid red; */
+  width: 250px;
+  height: 375px;
+}
+
+.about .container .about-content .image::before {
+  content: "";
+  position: absolute;
+  background-color: #c0c0c0;
+  opacity: 0.7;
+  width: 60px;
+  height: calc(100% + 80px);
+  z-index: -1; /* bash yrj3 bfrElement luur mura pic*/
+  top: -40px; /* bcs the height is 100% PLUS 80px */
+  left: -20px; /* bash EL ykhrj shwiya l left */
+  /*  */
+  border-top-left-radius: 15px;
+  border-end-end-radius: 15px;
+}
+
+.about .container .about-content .image::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 300px; /* mabaghyinsh el ykun 9d pic, so the height just a choice*/
+  /* background-color: lightcoral; */
+  border-left: 80px solid var(--color5);
+  border-bottom: 40px solid var(--color6);
+  z-index: -1;
+  right: -150px;
+  top: -20px;
+  /*  */
+  border-top-left-radius: 15px;
+  border-end-end-radius: 15px;
+}
+
+.about .container .about-content .text {
+  flex-basis: calc(100% - 500px);
+}
+
+.about .container .about-content .text p:first-of-type {
+  font-weight: 700;
+  line-height: 2;
+  margin-bottom: 40px;
+  color: var(--color8);
+}
+
+.about .container .about-content .text hr {
+  width: 50%;
+  display: inline-block;
+  border-color: var(--color8);
+  /* for HR, we use border-color NOT the color */
+}
+
+.about .container .about-content .text p:last-of-type {
+  line-height: 1.5;
+  font-size: 14px;
+  color: var(--color7);
+}
+
+/* start media for the section about */
+
+@media (max-width: 768px) {
+}
+
+/* medium */
+@media (max-width: 991px) {
+  /* bash dak text yji f center, o dakshi yji column */
+  .about .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* before and after mayb9awsh */
+  .about .container .about-content .image::before,
+  .about .container .about-content .image::after {
+    display: none;
+  }
+
+  /* some styles 3la image, center, nssghr.. */
+  .about .about-content .image {
+    margin: 0 auto 60px;
+  }
+
+  /* edit the p just for the button */
+  .about .about-content .text p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* large */
+@media (max-width: 1200px) {
+}
+
+/* end media for the section about */
+/* end about section */
+
+/* --- --- --- */
+
+/* start contact section */
+
+.contact {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: var(--color1);
+}
+
+.contact .container .info {
+  margin-top: 100px;
+  /* text-align: center; */
+}
+
+.contact .info .label {
+  font-size: 35px;
+  font-weight: 700;
+  color: var(--color8-2);
+  margin-bottom: 15px;
+}
+
+/* start gif */
+.contact .info .label {
+  background-image: url(../images/two.gif);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+/* end gif */
+
+.contact .info .link {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--color8);
+  text-decoration: none;
+}
+
+.contact .info .social {
+  display: flex;
+  /* justify-content: center; */
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+.contact .info .social i {
+  margin-left: 10px;
+  color: var(--color8);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact .info .social i:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .contact .info .label {
+    font-size: 20px;
+  }
+
+  .contact .info .link {
+    font-size: 18px;
+  }
+
+  .contact .info .social {
+    font-size: 14px;
+    justify-content: center;
+  }
+  .contact .info {
+    text-align: center;
+  }
+}
+
+/* end contact section */
+
+/* --- --- --- */
+
+/* start footer */
+
+.footer {
+  background-color: var(--color8);
+  color: var(--color1);
+  padding: 30px 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.footer span {
+  font-weight: 800;
+  color: var(--color8);
+  background-color: var(--color1);
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.4s linear;
+}
+
+.footer span:hover {
+  background-color: var(--color8);
+  color: var(--color1);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 14px;
+  }
+}
+
+/* end foooteer section */
